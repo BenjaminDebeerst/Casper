@@ -1,8 +1,11 @@
-# Casper
+# Casper for Giuseppina La Rouge
 
-The default theme for [Ghost](http://github.com/tryghost/ghost/).
+The modified Casper them for the [Ghost](http://github.com/tryghost/ghost/) blog giuseppina-la-rouge.ghost.io.
 
-To download, visit the [releases](https://github.com/TryGhost/Casper/releases) page.
+The modifications include
+- Colorization and font size changes
+- Embedding of Slimbox for galleries
+- Embedding of jQuery
 
 ## Copyright & License
 

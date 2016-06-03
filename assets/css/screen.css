@@ -18,6 +18,7 @@
     11. Media Queries (Tablet)
     12. Media Queries (Mobile)
     13. Animations
+    14. Slimbox
 
 */
 
@@ -25,7 +26,7 @@
    0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
    ========================================================================== */
 
-html { 
+html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
@@ -71,7 +72,7 @@ button, input, optgroup, select, textarea {
 }
 button { overflow: visible; }
 button, select { text-transform: none; }
-button, html input[type="button"], 
+button, html input[type="button"],
 input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer;
@@ -115,7 +116,7 @@ td, th{ padding: 0; }
 }
 
 /* Apply these base styles to all icons */
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before, .lbLoading [class^="rotate-arrow-"]:before, .lbLoading [class^="rotate-arrow-"]:after {
     font-family: "casper-icons", "Open Sans", sans-serif;
     speak: none;
     font-style: normal;
@@ -185,8 +186,8 @@ body {
     max-height: 100%;
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
-    font-size: 1.8rem;
-    line-height: 1.75em;
+    font-size: 1.5rem;
+    line-height: 2em;
     color: #3A4145;
     -webkit-font-feature-settings: 'kern' 1;
     -moz-font-feature-settings: 'kern' 1;
@@ -210,7 +211,7 @@ h4, h5, h6 {
     color: #2E2E2E;
     line-height: 1.15em;
     margin: 0 0 0.4em 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Calibri", "Open Sans", sans-serif;
     text-rendering: geometricPrecision;
 }
 
@@ -218,27 +219,29 @@ h1 {
     font-size: 5rem;
     letter-spacing: -2px;
     text-indent: -3px;
+    color: #a20b21;
 }
 
 h2 {
-    font-size: 3.6rem;
+    font-size: 2.8rem;
     letter-spacing: -1px;
+    color: #a20b21;
 }
 
 h3 {
-    font-size: 3rem;
-}
-
-h4 {
     font-size: 2.5rem;
 }
 
-h5 {
+h4 {
     font-size: 2rem;
 }
 
+h5 {
+    font-size: 1.75rem;
+}
+
 h6 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 a {
@@ -305,7 +308,7 @@ hr {
 blockquote {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 1.75em 0 1.75em -2.2em;
+    margin: 1.75em 0 1.75em 0em;
     padding: 0 0 0 1.75em;
     border-left: #4A4A4A 0.4em solid;
 }
@@ -513,7 +516,10 @@ body.nav-opened .site-wrapper {
 }
 
 .main-header .inner {
-    width: 80%;
+    width: 100%;
+    max-width: none;
+    padding: 0.3rem 0rem 1.4rem;
+    background: rgba(255, 255, 255, 0.44) none;
 }
 
 .main-nav {
@@ -545,7 +551,7 @@ body.nav-opened .nav-cover {
     z-index: 5;
     width: 240px;
     opacity: 0;
-    background: #111;
+    background: #3B3B3B;
     margin-bottom: 0;
     text-align: left;
     overflow-y: auto;
@@ -632,18 +638,6 @@ body.nav-opened .nav {
     counter-reset: item;
 }
 
-.nav li:before {
-    display: block;
-    float: right;
-    padding-right: 4%;
-    padding-left: 5px;
-    text-align: right;
-    font-size: 1.2rem;
-    vertical-align: bottom;
-    color: #B8B8B8;
-    content: counter(item, lower-roman);
-    counter-increment: item;
-}
 .nav li {
     margin: 0;
 }
@@ -659,18 +653,8 @@ body.nav-opened .nav {
 }
 .nav li a:after {
     display: inline-block;
-    content: " .......................................................";
     color: rgba(255,255,255,0.2);
     margin-left: 5px;
-}
-.nav .nav-current:before {
-    color: #fff;
-}
-.nav .nav-current a:after {
-    content: " ";
-    border-bottom: rgba(255,255,255,0.5) 1px solid;
-    width: 100%;
-    height: 1px;
 }
 
 .nav a:link,
@@ -817,28 +801,19 @@ body.nav-opened .nav {
 
 /* When the navigation is closed */
 .nav-closed .menu-button {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.6);
+    color: #000;
+    border-color: rgba(0, 0, 0, 0.6);
+    background: rgba(255,255,255,0.3);
 }
 .nav-closed .menu-button:hover {
     color: #222;
 }
 
-/* When the navigation is closed and there is no cover image */
-.nav-closed .no-cover .menu-button {
-    border-color: #BFC8CD;
-    color: #9EABB3;
-}
-.nav-closed .no-cover .menu-button:hover {
-    border-color: #555;
-    color: #555;
-}
-
 /* When the navigation is opened */
 .nav-opened .menu-button {
     padding: 0 12px;
-    background: #111;
-    border-color: #111;
+    background: #3B3B3B;
+    border-color: #3B3B3B;
     color: #fff;
     -webkit-transform: translate3D(94px, 0, 0);
         -ms-transform: translate3D(94px, 0, 0);
@@ -872,7 +847,7 @@ body.nav-opened .nav {
     letter-spacing: -1px;
     font-weight: 700;
     font-family: "Open Sans", sans-serif;
-    color: #fff;
+    color: #a20b21;
 }
 
 .page-description {
@@ -882,7 +857,7 @@ body.nav-opened .nav {
     font-weight: 400;
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
-    color: rgba(255,255,255,0.8);
+    color: #a20b21;
 }
 
 .no-cover.main-header {
@@ -941,12 +916,17 @@ body.nav-opened .nav {
     box-shadow: #FFF 0 0 0 5px;
 }
 
+.post img {
+    max-width: 100%;
+}
+
 body:not(.post-template) .post-title {
-    font-size: 3.6rem;
+    font-size: 3rem;
 }
 
 .post-title a {
     text-decoration: none;
+    color: #a20b21;
 }
 
 .post-excerpt p {
@@ -965,7 +945,7 @@ body:not(.post-template) .post-title {
     font-family: "Open Sans", sans-serif;
     font-size: 1.5rem;
     line-height: 2.2rem;
-    color: #9EABB3;
+    color: #ffc703;
 }
 
 .author-thumb {
@@ -977,7 +957,7 @@ body:not(.post-template) .post-title {
 }
 
 .post-meta a {
-    color: #9EABB3;
+    color: #ffc703;
     text-decoration: none;
 }
 
@@ -1038,7 +1018,6 @@ body:not(.post-template) .post-title {
     line-height: 1.5em;
 }
 
-
 /* ==========================================================================
    5. Single Post - When you click on an individual post
    ========================================================================== */
@@ -1049,6 +1028,8 @@ body:not(.post-template) .post-title {
 
 .post-template .post-title {
     margin-bottom: 0;
+    font-size: 3.5rem;
+    letter-spacing: -1px;
 }
 
 .post-template .post-meta {
@@ -1084,7 +1065,7 @@ body:not(.post-template) .post-title {
    text column to break out. */
 .post-content img {
     display: block;
-    max-width: 126%;
+    max-width: 100%;
     height: auto;
     padding: 0.6em 0;
     /* Centers an image by (1) pushing its left edge to the
@@ -1148,7 +1129,7 @@ body:not(.post-template) .post-title {
 }
 
 .author-meta a {
-    color: #9EABB3;
+    color: #a20b21;
 }
 .author-meta a:hover {
     color: #111;
@@ -1160,7 +1141,7 @@ body:not(.post-template) .post-title {
 }
 
 .post-footer h4 a {
-    color: #2e2e2e;
+    color: #a20b21;
     text-decoration: none;
 }
 
@@ -1361,13 +1342,14 @@ body:not(.post-template) .post-title {
     position: relative;
     text-align: center;
     color: #fff;
-    background: #222 no-repeat center center;
+    background-color: #ffc703;
+    background-image: none!important; /* Use !important to overwrite inline background-image produced by template. This is temporary, change the template! */
     background-size: cover;
     overflow: hidden;
+    border-top: 2px solid #a20b21;
 }
 .read-next-story:hover:before {
-    background: rgba(0,0,0,0.8);
-    transition: all 0.2s ease;
+    background: none;
 }
 .read-next-story:hover .post:before {
     color: #222;
@@ -1383,8 +1365,7 @@ body:not(.post-template) .post-title {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.7);
-    transition: all 0.5s ease;
+    background: none;
 }
 
 .read-next-story .post {
@@ -1409,39 +1390,17 @@ body:not(.post-template) .post-title {
 
 .read-next-story h2 {
     margin-top: 1rem;
-    color: #fff;
+    color: #000;
 }
 
 .read-next-story p {
     margin: 0;
-    color: rgba(255,255,255,0.8);
+    color: #000;
 }
 
-/* Special styles for posts with no cover images */
-.read-next-story.no-cover {
-    background: #f5f8fa;
-}
-
-.read-next-story.no-cover:before {
-    display: none;
-}
-
-.read-next-story.no-cover .post:before {
-    color: rgba(0,0,0,0.5);
-    border-color: rgba(0,0,0,0.2);
-}
-
-.read-next-story.no-cover h2 {
-    color: rgba(0,0,0,0.8);
-}
-
-.read-next-story.no-cover p {
-    color: rgba(0,0,0,0.5);
-}
-
-/* if there are two posts without covers, put a border between them */
-.read-next-story.no-cover + .read-next-story.no-cover {
-    border-left: rgba(0,0,100,0.04) 1px solid;
+/* if there are two posts, put a border between them */
+.read-next-story + .read-next-story {
+    border-left: #a20b21 2px solid;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1576,17 +1535,17 @@ body:not(.post-template) .post-title {
     font-family: "Open Sans", sans-serif;
     font-size: 1rem;
     line-height: 1.75em;
-    color: #BBC7CC;
+    color: #666;
 }
 
 .site-footer a {
-    color: #BBC7CC;
+    color: #666;
     text-decoration: none;
     font-weight: bold;
 }
 
 .site-footer a:hover {
-    border-bottom: #bbc7cc 1px solid;
+    border-bottom: #666 1px solid;
 }
 
 .poweredby {
@@ -2062,6 +2021,262 @@ body:not(.post-template) .post-title {
         -webkit-transform: translateY(-5px) rotate(-90deg);
                 transform: translateY(-5px) rotate(-90deg);
     }
+}
+
+/* ==========================================================================
+   14. Slimbox
+   ========================================================================== */
+
+/* Slimbox Galery styles */
+ .gallery a {
+     display:block;
+     float: left;
+     width: 20%;
+     max-width: 150px;
+     margin: 0.5em;
+     padding: 0;
+ }
+
+ .gallery a img {
+     display: block;
+     width: 100%;
+     border: 1px solid #666;
+     padding: 0;
+     margin: 0;
+ }
+
+/* Slimbox overlay styles */
+
+#lbOverlay {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    cursor: pointer;
+}
+
+#lbCenter, #lbBottomContainer {
+    position: absolute;
+    z-index: 9999;
+    overflow: hidden;
+    background-color: #222;
+}
+
+/* create a loading circle of arrows in the loading box */
+.lbLoading #lbArrowWrapper {
+  display: block;
+  width: 4.8rem;
+  height: 4.8rem;
+  -moz-animation: wrapper-spin 1.5s linear infinite;
+  -webkit-animation: wrapper-spin 1.5s linear infinite;
+  animation: wrapper-spin 1.5s linear infinite;
+  /* center the wrapper vertically by first pushing its top edge to the center
+     and by then translating it back by 50% of its height. The latter is done in
+     the animation below. */
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+}
+
+@-moz-keyframes wrapper-spin {
+    from { -moz-transform: translateY(-50%) rotate(0deg); }
+    to { -moz-transform: translateY(-50%) rotate(360deg); }
+}
+@-webkit-keyframes wrapper-spin {
+    from { -webkit-transform: translateY(-50%) rotate(0deg); }
+    to { -webkit-transform: translateY(-50%) rotate(360deg); }
+}
+@keyframes wrapper-spin {
+  from {transform:translateY(-50%) rotate(0deg);}
+  to {transform:translateY(-50%) rotate(360deg);}
+}
+
+.lbLoading [class^="rotate-arrow-"]:before, .lbLoading [class^="rotate-arrow-"]:after {
+  content: "\f605";
+  display: block;
+  position: absolute;
+  text-align: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  font-size: 0.8rem;
+  transform-origin: 50% -200%;
+}
+
+.lbLoading .rotate-arrow-1::before {
+  transform: translate(2rem,4rem) rotate(0deg);
+  color: #222;
+}
+.lbLoading .rotate-arrow-1::after {
+  transform: translate(2rem,4rem) rotate(10deg);
+  color: #333;
+}
+.lbLoading .rotate-arrow-2::before {
+  transform: translate(2rem,4rem) rotate(20deg);
+  color: #444;
+}
+.lbLoading .rotate-arrow-2::after {
+  transform: translate(2rem,4rem) rotate(30deg);
+  color: #555;
+}
+.lbLoading .rotate-arrow-3::before {
+  transform: translate(2rem,4rem) rotate(40deg);
+  color: #666;
+}
+.lbLoading .rotate-arrow-3::after {
+  transform: translate(2rem,4rem) rotate(50deg);
+  color: #777;
+}
+.lbLoading .rotate-arrow-4::before {
+  transform: translate(2rem,4rem) rotate(60deg);
+  color: #888;
+}
+.lbLoading .rotate-arrow-4::after {
+  transform: translate(2rem,4rem) rotate(70deg);
+  color: #999;
+}
+.lbLoading .rotate-arrow-5::before {
+  transform: translate(2rem,4rem) rotate(80deg);
+  color: #aaa;
+}
+.lbLoading .rotate-arrow-5::after {
+  transform: translate(2rem,4rem) rotate(90deg);
+  color: #bbb;
+}
+.lbLoading .rotate-arrow-6::before {
+  transform: translate(2rem,4rem) rotate(100deg);
+  color: #ccc;
+}
+.lbLoading .rotate-arrow-6::after {
+  transform: translate(2rem,4rem) rotate(110deg);
+  color: #ddd;
+}
+.lbLoading .rotate-arrow-7::before {
+  transform: translate(2rem,4rem) rotate(120deg);
+  color: #eee;
+}
+.lbLoading .rotate-arrow-7::after {
+  transform: translate(2rem,4rem) rotate(130deg);
+  color: #fff;
+}
+
+
+#lbImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1rem solid #222;
+    background-repeat: no-repeat;
+}
+
+#lbPrevLink, #lbNextLink {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    outline: none;
+}
+
+#lbPrevLink {
+    left: 0;
+    text-decoration: none;
+}
+
+#lbPrevLink:hover {
+    background: none;
+}
+
+#lbNextLink {
+    right: 0;
+    text-decoration: none;
+}
+
+#lbNextLink:hover {
+    background: none;
+}
+
+#lbBottom {
+    font-family: "Calibri", "Open Sans", sans-serif;
+    font-size: 10px;
+    color: #ddd;
+    line-height: 1.4em;
+    text-align: left;
+    border: 1rem solid #222;
+    border-top-style: none;
+}
+
+#lbCloseLink {
+    display: block;
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    margin: 5px 0;
+    outline: none;
+    text-decoration: none;
+}
+
+#lbCloseLink::before {
+    font-family: "Calibri", "Open Sans", sans-serif;
+    speak: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-decoration: none !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 2.5rem;
+    display: block;
+    color: #ddd;
+    content: "X";
+    -webkit-transform: scaleX(1.3);
+    -ms-transform: scaleX(1.3);
+    transform: scaleX(1.3);
+    font-weight: lighter;
+    position: relative;
+    left: 0.9rem;
+}
+
+#lbCaption, #lbNumber {
+    margin-right: 71px;
+}
+
+#lbCaption {
+    font-weight: bold;
+}
+
+#lbPrevLink:hover .icon-arrow-left, #lbNextLink:hover .icon-arrow-left{
+    display: block;
+}
+
+#lbPrevLink .icon-arrow-left, #lbNextLink .icon-arrow-left {
+    display: none;
+    text-decoration: none;
+    color: #ddd;
+    background: rgba(34,34,34,0.5);
+    position: absolute;
+    top: 15%;
+    width: 3.5rem;
+    height: 3rem;
+    font-size: 3rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+#lbPrevLink .icon-arrow-left {
+    left: 0;
+}
+
+#lbNextLink .icon-arrow-left {
+    right: 0;
+    /* Turn 180 deg to make the arrow pont right */
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 
