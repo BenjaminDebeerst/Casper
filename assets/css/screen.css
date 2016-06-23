@@ -117,7 +117,7 @@ td, th{ padding: 0; }
 }
 
 /* Apply these base styles to all icons */
-[class^="icon-"]:before, [class*=" icon-"]:before, .lbLoading [class^="rotate-arrow-"]:before, .lbLoading [class^="rotate-arrow-"]:after {
+[class^="icon-"]:before, [class*=" icon-"]:before, .featherlight-next::before, .featherlight-previous::before {
     font-family: "casper-icons", "Open Sans", sans-serif;
     speak: none;
     font-style: normal;
@@ -2381,8 +2381,14 @@ body:not(.post-template) .post-title {
       font-size: 1.5rem;
     }
 
-   	.featherlight-next span,
-   	.featherlight-previous span {
+    .featherlight-next span,
+    .featherlight-previous span {
+      display: none;
+    }
+
+   	.featherlight-next::before,
+   	.featherlight-previous::before {
+      content: "\f605";
    		display: none;
    		position: absolute;
 
@@ -2404,14 +2410,17 @@ body:not(.post-template) .post-title {
    		font-style: normal;
    		font-weight: normal;
    	}
-   	.featherlight-next span {
+   	.featherlight-next::before {
    		right: 5%;
    		left: auto;
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg);
    	}
 
 
-   	.featherlight-next:hover span,
-   	.featherlight-previous:hover span {
+   	.featherlight-next:hover::before,
+   	.featherlight-previous:hover::before {
    		display: inline-block;
    	}
     // Hide next on last slide and previous on first slide
