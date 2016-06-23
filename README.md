@@ -4,7 +4,7 @@ The modified Casper them for the [Ghost](https://github.com/tryghost/ghost/) blo
 
 The modifications include
 - Colorization and font size changes
-- Embedding of Slimbox for galleries
+- Embedding of Featherlight and Featherlight-gallery plugin for galleries + some customization for captions
 - Embedding of jQuery
 
 ## Copyright & License
