@@ -2444,8 +2444,8 @@ body:not(.post-template) .post-title {
    	.featherlight-previous:hover {
    		background: none;
    	}
-   	.featherlight-next span,
-   	.featherlight-previous span {
+   	.featherlight-next::before,
+   	.featherlight-previous::before {
    		display: block;
    	}
    }
@@ -2469,6 +2469,13 @@ body:not(.post-template) .post-title {
    		margin-top: -30px;
    		font-size: 40px;
    	}
+
+    .featherlight-caption {
+      left: 10px;
+      margin-right: 10px;
+      padding: 0.4em;
+      font-size: 1.3rem;
+    }
    }
 
 /* ==========================================================================
