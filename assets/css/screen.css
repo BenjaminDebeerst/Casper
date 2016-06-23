@@ -2369,16 +2369,20 @@ body:not(.post-template) .post-title {
    	}
 
     .featherlight-caption {
-      display: block;
+      display: none;
       position: absolute;
       bottom: 0;
       left: 25px;
-      right: 25px;
+      margin-right: 25px;
       background: rgba(0,0,0,0.5);
       color: #fff;
-      padding: 0.5em;
+      padding: 0.4em 1em;
       font-family: "Calibri", "Open Sans", sans-serif;
       font-size: 1.5rem;
+      line-height: 1.2em;
+    }
+    .featherlight-content:hover .featherlight-caption {
+      display: block;
     }
 
     .featherlight-next span,
