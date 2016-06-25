@@ -1,6 +1,6 @@
-# Casper for Giuseppina La Rouge
+# Casper Theme for Giuseppina La Rouge
 
-The modified Casper them for the [Ghost](https://github.com/tryghost/ghost/) blog [giuseppina-la-rouge.ghost.io](https://giuseppina-la-rouge.ghost.io).
+A modified [Casper](https://github.com/TryGhost/Casper) theme for the [Ghost](https://github.com/tryghost/ghost/) blog [giuseppina-la-rouge.ghost.io](https://giuseppina-la-rouge.ghost.io).
 
 The modifications include
 - Colorization and font size changes
