@@ -79,5 +79,7 @@ $('.gallery a').featherlightGallery();
 $.featherlightGallery.prototype.afterContent = function() {
   var caption = this.$currentTarget.attr('title');
   this.$instance.find('.featherlight-caption').remove();
-  $('<div class="featherlight-caption">').text(caption).appendTo(this.$instance.find('.featherlight-content'));
+  if(caption) {
+    $('<div class="featherlight-caption">').text(caption).appendTo(this.$instance.find('.featherlight-content'));
+  }
 };
