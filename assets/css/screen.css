@@ -1152,6 +1152,22 @@ body:not(.post-template) .post-title {
     transform: translateX(-50%);
 }
 
+/* Give the possibility for some images to float within the text. */
+.post-content img.floatleft {
+    float: left;
+    padding: 0.5em 1em 0.5em 0;
+    /* Reset the transformations for middle alignment from above */
+    transform: none;
+    left: 0;
+}
+.post-content img.floatright {
+    float: right;
+    padding: 0.5em 0em 0.5em 1em;
+    /* Reset the transformations for middle alignment from above */
+    transform: none;
+    left: 0;
+}
+
 .footnotes {
     font-style: italic;
     font-size: 1.3rem;
